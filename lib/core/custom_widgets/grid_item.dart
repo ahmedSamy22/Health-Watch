@@ -5,13 +5,16 @@ import 'package:go_router/go_router.dart';
 class GridItem extends StatelessWidget {
   const GridItem({
     super.key,
+    required this.model,
   });
+
+  final Map model;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kDiseaseRouteKey);
+        GoRouter.of(context).push(AppRouter.kDiseaseRouteKey, extra: model);
       },
       child: Card(
         elevation: 5.0,
@@ -19,21 +22,21 @@ class GridItem extends StatelessWidget {
         child: Stack(
           alignment: AlignmentDirectional.bottomStart,
           children: [
-            const Image(
-              image: NetworkImage(
-                  'https://img.freepik.com/premium-photo/young-woman-using-nebulizer-asthma-respiratory-diseases-white-background_495423-24950.jpg'),
+            Image.asset(
+              '${model['image']}',
               width: double.infinity,
               height: 150.0,
             ),
             Container(
               width: double.infinity,
               color: Colors.black.withOpacity(0.6),
-              child: const Text(
-                'ASTHMA ATTACK',
+              child: Text(
+                '${model['title']}',
                 textAlign: TextAlign.center,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
+                  fontFamily: 'Amiri',
                   fontSize: 16.0,
                   color: Colors.white,
                 ),

@@ -19,17 +19,52 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Image.asset(
-      AssetsData.logo,
-      width: 250,
-      height: 250,
-    ));
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 60.0),
+      child: Center(
+          child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            // AssetsData.logoFinal,
+            // width: MediaQuery.of(context).size.width * 0.7,
+            AssetsData.logoFinal,
+            width: MediaQuery.of(context).size.width * 0.7,
+          ),
+          const Text(
+            'Health Bracelet',
+            style: TextStyle(
+              fontFamily: 'TiltNeon',
+              fontSize: 26.0,
+              color: Colors.red,
+            ),
+          ),
+          const Text(
+            '، بكلمة واحدة لشخص سقيته جرعة حياة',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Amiri',
+              fontSize: 22.0,
+              //color: Colors.red,
+            ),
+          ),
+          const Text(
+            '.وبهدية بسيطة اعطيته نبضة حياة',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'Amiri',
+              fontSize: 22.0,
+              //color: Colors.red,
+            ),
+          ),
+        ],
+      )),
+    );
   }
 
   void navigateToAuth() {
     Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(seconds: 3),
       () {
         if (AppRouter.loged) {
           GoRouter.of(context).pushReplacement(AppRouter.kHomeRouteKey);

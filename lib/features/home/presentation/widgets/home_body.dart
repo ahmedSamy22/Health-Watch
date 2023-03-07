@@ -1,7 +1,9 @@
 import 'package:bio_medical/core/custom_widgets/grid_item.dart';
-import 'package:bio_medical/core/utils/styles.dart';
+import 'package:bio_medical/features/home/presentation/manager/diseases_cubit/diseases_cubit.dart';
+import 'package:bio_medical/features/home/presentation/manager/diseases_cubit/diseases_states.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({Key? key}) : super(key: key);
@@ -13,38 +15,53 @@ class HomeBody extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          buildCarouselSlider(),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text('Most Common Disease', style: Styles.textStyle20),
-                const SizedBox(
-                  height: 10.0,
+    return BlocConsumer<DiseasesCubit, DiseasesStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildCarouselSlider(),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text('الأمراض الأكثر إنتشاراً',
+                        textDirection: TextDirection.rtl,
+                        style: TextStyle(
+                          fontFamily: 'Amiri',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    if (state is GetDateBaseState)
+                      GridView.count(
+                        crossAxisCount: 1,
+                        mainAxisSpacing: 1.0,
+                        crossAxisSpacing: 1.5,
+                        childAspectRatio: 1 / 0.5,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: List.generate(
+                          DiseasesCubit.get(context).diseases.length,
+                          (index) => GridItem(
+                              model:
+                                  DiseasesCubit.get(context).diseases[index]),
+                        ),
+                      ),
+                  ],
                 ),
-                GridView.count(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 1.0,
-                  crossAxisSpacing: 1.5,
-                  childAspectRatio: 1 / 1,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: List.generate(
-                    10,
-                    (index) => const GridItem(),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 

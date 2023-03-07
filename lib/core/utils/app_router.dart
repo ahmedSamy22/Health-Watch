@@ -3,6 +3,7 @@ import 'package:bio_medical/features/auth/presentation/login_view.dart';
 import 'package:bio_medical/features/auth/presentation/signUp_view.dart';
 import 'package:bio_medical/features/home/presentation/disease_view.dart';
 import 'package:bio_medical/features/home/presentation/home_view.dart';
+import 'package:bio_medical/features/home/presentation/manager/diseases_cubit/diseases_cubit.dart';
 import 'package:bio_medical/features/home/presentation/manager/home_cubit/home_cubit.dart';
 import 'package:bio_medical/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,8 +43,13 @@ abstract class AppRouter {
         pageBuilder: (context, state) => buildPageWithSlideTransition<void>(
           context: context,
           state: state,
-          child: BlocProvider(
-              create: (context) => HomeCubit(), child: const HomeView()),
+          child: MultiBlocProvider(providers: [
+            BlocProvider(
+              create: (context) => HomeCubit(),
+            ),
+            BlocProvider(
+                create: (context) => DiseasesCubit()..createDataBase()),
+          ], child: const HomeView()),
         ),
       ),
       GoRoute(
@@ -51,7 +57,9 @@ abstract class AppRouter {
         pageBuilder: (context, state) => buildPageWithSlideTransition<void>(
           context: context,
           state: state,
-          child: DiseaseView(),
+          child: DiseaseView(
+            model: state.extra as Map,
+          ),
         ),
       ),
     ],
