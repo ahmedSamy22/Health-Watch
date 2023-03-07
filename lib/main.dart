@@ -1,10 +1,23 @@
 import 'package:bio_medical/core/utils/app_router.dart';
 import 'package:bio_medical/core/utils/block_observer.dart';
+import 'package:bio_medical/core/utils/cache_helper.dart';
+import 'package:bio_medical/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await CacheHelper.init();
+  AppRouter.loged = CacheHelper.getData(key: 'loged');
+  AppRouter.loged ??= false;
+
+  print('loged   ${AppRouter.loged}');
+
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }

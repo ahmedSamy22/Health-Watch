@@ -1,4 +1,3 @@
-import 'package:bio_medical/core/utils/assets.dart';
 import 'package:bio_medical/features/auth/presentation/widgets/login_view_body.dart';
 import 'package:flutter/material.dart';
 

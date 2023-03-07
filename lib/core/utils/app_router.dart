@@ -1,3 +1,4 @@
+import 'package:bio_medical/core/utils/cache_helper.dart';
 import 'package:bio_medical/core/utils/custom_transition_page.dart';
 import 'package:bio_medical/features/auth/presentation/login_view.dart';
 import 'package:bio_medical/features/auth/presentation/signUp_view.dart';
@@ -14,8 +15,9 @@ abstract class AppRouter {
   static String kSignUpRouteKey = '/signUpView';
   static String kHomeRouteKey = '/homeView';
   static String kDiseaseRouteKey = '/diseaseView';
-  static bool loged =
-      false; // it will be saved in SharedPref and initialize in login or signUp screen
+
+
+  static dynamic loged ; // it will be saved in SharedPref and initialize in login or signUp screen
   static final router = GoRouter(
     routes: [
       GoRoute(
