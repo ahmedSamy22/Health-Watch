@@ -82,10 +82,16 @@ class ProfileBody extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'User Name',
-                        style: Styles.textStyle20,
-                      ),
+                      if (state is GetUserSuccessState)
+                        Text(
+                          '${state.userModel.name}',
+                          style: Styles.textStyle20,
+                        ),
+                      if (state is GetUserErrorState)
+                        const Text(
+                          'User Name',
+                          style: Styles.textStyle20,
+                        ),
                       const SizedBox(
                         width: 10.0,
                       ),
