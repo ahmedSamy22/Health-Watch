@@ -21,6 +21,8 @@ class LoginCubit extends Cubit<LoginStates> {
       password: password,
     )
         .then((value) {
+      CacheHelper.saveData(key: 'uId', value: value.user?.uid);
+      uId = CacheHelper.getData(key: 'uId');
       CacheHelper.saveData(key: 'loged', value: true);
       AppRouter.loged = CacheHelper.getData(key: 'loged');
 

@@ -1,5 +1,6 @@
 import 'package:bio_medical/core/utils/app_router.dart';
 import 'package:bio_medical/core/utils/cache_helper.dart';
+import 'package:bio_medical/core/utils/constants.dart';
 import 'package:bio_medical/features/auth/data/models/user_model.dart';
 import 'package:bio_medical/features/auth/presentation/manger/register_cubit/register_cubit_states.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -26,11 +27,11 @@ class RegisterCubit extends Cubit<RegisterStates> {
       password: password,
     )
         .then((value) {
-      // CacheHelper.saveData(key: 'uId', value: value.user?.uid);
-      // uId = CacheHelper.getData(key: 'uId');
+      CacheHelper.saveData(key: 'uId', value: value.user?.uid);
+      uId = CacheHelper.getData(key: 'uId');
       CacheHelper.saveData(key: 'loged', value: true);
       AppRouter.loged = CacheHelper.getData(key: 'loged');
-      // print(uId);
+      print(uId);
       createUser(
         name: name,
         email: email,
@@ -56,7 +57,8 @@ class RegisterCubit extends Cubit<RegisterStates> {
       email: email,
       phone: phone,
       uId: uId,
-      image: 'assets/images/profileImage.png',
+      image:
+          'https://cdn-icons-png.flaticon.com/512/667/667378.png?w=740&t=st=1678289744~exp=1678290344~hmac=32632b3a7cec300267f22b852dfddd1775e8602077e13cd925e88ac3dfc78478',
     );
     FirebaseFirestore.instance
         .collection('users')

@@ -6,6 +6,7 @@ import 'package:bio_medical/features/home/presentation/disease_view.dart';
 import 'package:bio_medical/features/home/presentation/home_view.dart';
 import 'package:bio_medical/features/home/presentation/manager/diseases_cubit/diseases_cubit.dart';
 import 'package:bio_medical/features/home/presentation/manager/home_cubit/home_cubit.dart';
+import 'package:bio_medical/features/home/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:bio_medical/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -16,8 +17,8 @@ abstract class AppRouter {
   static String kHomeRouteKey = '/homeView';
   static String kDiseaseRouteKey = '/diseaseView';
 
-
-  static dynamic loged ; // it will be saved in SharedPref and initialize in login or signUp screen
+  static dynamic
+      loged; // it will be saved in SharedPref and initialize in login or signUp screen
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -51,6 +52,9 @@ abstract class AppRouter {
             ),
             BlocProvider(
                 create: (context) => DiseasesCubit()..createDataBase()),
+            BlocProvider(
+              create: (context) => ProfileCubit()..getUserData(),
+            ),
           ], child: const HomeView()),
         ),
       ),
