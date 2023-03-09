@@ -10,6 +10,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class ProfileCubit extends Cubit<ProfileCubitStates> {
   ProfileCubit() : super(ProfileCubitInitialState());
+  static ProfileCubit get(context) => BlocProvider.of(context);
 
   UserModel? userModel;
 
@@ -71,8 +72,6 @@ class ProfileCubit extends Cubit<ProfileCubitStates> {
   void updateUser({
     String? name,
     String? phone,
-    String? bio,
-    String? cover,
     String? image,
   }) {
     emit(UpdateUserLoadingState());

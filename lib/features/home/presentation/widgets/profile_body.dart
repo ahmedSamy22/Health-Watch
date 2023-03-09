@@ -1,8 +1,10 @@
+import 'package:bio_medical/core/utils/app_router.dart';
 import 'package:bio_medical/core/utils/styles.dart';
 import 'package:bio_medical/features/home/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:bio_medical/features/home/presentation/manager/profile_cubit/profile_cubit_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileBody extends StatelessWidget {
   const ProfileBody({Key? key}) : super(key: key);
@@ -18,6 +20,8 @@ class ProfileBody extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
+                if (state is GetUserLoadingState)
+                  const LinearProgressIndicator(),
                 SizedBox(
                   height: 240.0,
                   child: Stack(
@@ -96,7 +100,10 @@ class ProfileBody extends StatelessWidget {
                         width: 10.0,
                       ),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          GoRouter.of(context)
+                              .push(AppRouter.kEditProfileRouteKey);
+                        },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                               vertical: 3.0, horizontal: 7.0),
