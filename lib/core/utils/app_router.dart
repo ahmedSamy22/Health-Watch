@@ -56,7 +56,7 @@ abstract class AppRouter {
             // BlocProvider(
             //   create: (context) => ProfileCubit()..getUserData(),
             // ),
-          ], child: const HomeView()),
+          ], child: HomeView()),
         ),
       ),
       GoRoute(

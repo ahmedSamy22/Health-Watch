@@ -45,10 +45,10 @@ class EditProfileView extends StatelessWidget {
                 children: [
                   if (state is UpdateUserLoadingState)
                     const LinearProgressIndicator(),
-                  // if (state is! UpdateUserLoadingState)
-                  //   const SizedBox(
-                  //     height: 20.0,
-                  //   ),
+                  if (state is! UpdateUserLoadingState)
+                    const SizedBox(
+                      height: 20.0,
+                    ),
                   SizedBox(
                     height: 240.0,
                     child: Stack(

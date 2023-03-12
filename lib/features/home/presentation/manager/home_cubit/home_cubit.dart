@@ -28,4 +28,13 @@ class HomeCubit extends Cubit<HomeCubitStates> {
     currentIndex = index;
     emit(ChangeNavBarState());
   }
+
+  bool isBottomSheetShown = false;
+  bool subscribed = false;
+
+  void changeBottomSheetState(bool isShown) {
+    isBottomSheetShown = isShown;
+
+    emit(BottomSheetShownState());
+  }
 }

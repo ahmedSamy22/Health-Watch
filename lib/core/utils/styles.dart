@@ -16,6 +16,7 @@ abstract class Styles {
   static const textStyle28 = TextStyle(
     fontSize: 28,
     fontWeight: FontWeight.bold,
+    fontFamily: 'TiltNeon',
   );
   static const textStyle15 = TextStyle(
     fontSize: 15,

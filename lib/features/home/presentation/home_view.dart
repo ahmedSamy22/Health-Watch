@@ -1,10 +1,13 @@
+import 'package:bio_medical/core/custom_widgets/custom_buttom_sheet.dart';
 import 'package:bio_medical/features/home/presentation/manager/home_cubit/home_cubit.dart';
 import 'package:bio_medical/features/home/presentation/manager/home_cubit/home_cubit_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  HomeView({super.key});
+
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +15,54 @@ class HomeView extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
+          key: scaffoldKey,
           appBar: AppBar(
             automaticallyImplyLeading: false,
             title: Text(HomeCubit.get(context)
                 .titles[HomeCubit.get(context).currentIndex]),
+          ),
+          floatingActionButton: FloatingActionButton(
+            // onPressed: () {
+            //   if (HomeCubit.get(context).isBottomSheetShown) {
+            //     Navigator.pop(context);
+            //   } else {
+            //     scaffoldKey.currentState
+            //         ?.showBottomSheet(
+            //           (context) => Container(
+            //             width: double.infinity,
+            //             clipBehavior: Clip.antiAlias,
+            //             decoration: BoxDecoration(
+            //               color: Colors.white,
+            //               borderRadius: BorderRadius.circular(20.0),
+            //             ),
+            //             padding: const EdgeInsets.all(20.0),
+            //             child: Column(
+            //               mainAxisSize: MainAxisSize.min,
+            //               children: [
+            //                 Text('Hello there'),
+            //               ],
+            //             ),
+            //           ),
+            //           elevation: 0.0,
+            //         )
+            //         .closed
+            //         .then((value) {
+            //       HomeCubit.get(context).changeBottomSheetState(false);
+            //     });
+            //     HomeCubit.get(context).changeBottomSheetState(true);
+            //   }
+            // },
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return MyBottomSheet();
+                },
+              );
+            },
+            backgroundColor: Colors.transparent,
+            elevation: 5.0,
+            child: Image.asset('assets/images/subscribe.png'),
           ),
           bottomNavigationBar: BottomNavigationBar(
             onTap: (index) {
