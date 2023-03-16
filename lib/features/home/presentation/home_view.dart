@@ -18,6 +18,8 @@ class HomeView extends StatelessWidget {
           key: scaffoldKey,
           appBar: AppBar(
             automaticallyImplyLeading: false,
+            backgroundColor: HomeCubit.get(context)
+                .appBarColor[HomeCubit.get(context).currentIndex],
             title: Text(HomeCubit.get(context)
                 .titles[HomeCubit.get(context).currentIndex]),
           ),

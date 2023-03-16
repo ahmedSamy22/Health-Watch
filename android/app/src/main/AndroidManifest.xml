@@ -2,7 +2,7 @@
     package="com.example.bio_medical">
 
     <application
-        android:label="bio_medical"
+        android:label="Medical App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

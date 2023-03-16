@@ -1,6 +1,7 @@
 import 'package:bio_medical/core/utils/app_router.dart';
 import 'package:bio_medical/core/utils/block_observer.dart';
 import 'package:bio_medical/core/utils/cache_helper.dart';
+import 'package:bio_medical/core/utils/dio_helper.dart';
 import 'package:bio_medical/features/home/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:bio_medical/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await DioHelper.initDio();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

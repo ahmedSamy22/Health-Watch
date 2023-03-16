@@ -32,14 +32,6 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             width: MediaQuery.of(context).size.width * 0.7,
           ),
           const Text(
-            'Health Bracelet',
-            style: TextStyle(
-              fontFamily: 'TiltNeon',
-              fontSize: 26.0,
-              color: Colors.red,
-            ),
-          ),
-          const Text(
             '، بكلمة واحدة لشخص سقيته جرعة حياة',
             textAlign: TextAlign.center,
             style: TextStyle(

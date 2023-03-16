@@ -1,5 +1,7 @@
 import 'package:bio_medical/core/custom_widgets/sheet_first_view.dart';
 import 'package:bio_medical/core/utils/styles.dart';
+import 'package:bio_medical/features/home/presentation/home_view.dart';
+import 'package:bio_medical/features/payment/presentation/payment_view.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +21,14 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
 
   void _toggleView() {
     setState(() {
-      _currentPage = _currentPage == 0 ? 1 : 0;
+      if (_currentPage == 0) {
+        _currentPage = 1;
+      } else if (_currentPage == 1) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const PaymentView()),
+        );
+      }
     });
   }
 

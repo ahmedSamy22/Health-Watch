@@ -26,10 +26,9 @@ class SignUpViewBody extends StatelessWidget {
       create: (context) => RegisterCubit(),
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
-          if(state is RegisterErrorState)
-            {
-              showToast(text: state.error, state: ToastStates.ERROR);
-            }
+          if (state is RegisterErrorState) {
+            showToast(text: state.error, state: ToastStates.ERROR);
+          }
 
           if (state is CreateUserSuccessState) {
             GoRouter.of(context).pushReplacement(AppRouter.kHomeRouteKey);
@@ -41,7 +40,7 @@ class SignUpViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.3,
+                  height: MediaQuery.of(context).size.height * 0.25,
                   decoration: BoxDecoration(
                     color: const Color(0xff6e2594),
                     borderRadius: BorderRadius.vertical(
@@ -57,7 +56,7 @@ class SignUpViewBody extends StatelessWidget {
                   )),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.63,
+                  height: MediaQuery.of(context).size.height * 0.68,
                   child: Column(
                     children: [
                       Padding(

@@ -159,18 +159,18 @@ class LoginViewBody extends StatelessWidget {
                                 fallback: (context) => const Center(
                                     child: CircularProgressIndicator()),
                               ),
-                              Align(
-                                alignment: AlignmentDirectional.centerEnd,
-                                child: TextButton(
-                                  onPressed: () {},
-                                  child: const Text(
-                                    'Forgot password?',
-                                    style: TextStyle(
-                                      color: Color(0xffE70B89),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // Align(
+                              //   alignment: AlignmentDirectional.centerEnd,
+                              //   child: TextButton(
+                              //     onPressed: () {},
+                              //     child: const Text(
+                              //       'Forgot password?',
+                              //       style: TextStyle(
+                              //         color: Color(0xffE70B89),
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                               const SizedBox(
                                 height: 10.0,
                               ),
@@ -182,8 +182,6 @@ class LoginViewBody extends StatelessWidget {
                                   ),
                                   TextButton(
                                     onPressed: () {
-                                      // GoRouter.of(context)
-                                      //     .push(AppRouter.kSignUpRouteKey);
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(

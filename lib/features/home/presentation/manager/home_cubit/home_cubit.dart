@@ -17,6 +17,13 @@ class HomeCubit extends Cubit<HomeCubitStates> {
     'Connect',
     'Profile',
   ];
+
+  List<Color> appBarColor = [
+    Colors.white,
+    const Color(0xffFF938F),
+    Colors.white,
+  ];
+
   List<Widget> screens = [
     const HomeBody(),
     const ConnectBody(),
